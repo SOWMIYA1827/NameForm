@@ -3,6 +3,7 @@ import sqlite3
 
 app = Flask(__name__)
 
+# HOME PAGE (FORM)
 @app.route("/", methods=["GET", "POST"])
 def index():
 
@@ -23,7 +24,6 @@ def index():
         cursor.execute("""
         INSERT INTO feedback
         (name,rno,dept,year,domain,experience,skills,specific)
-
         VALUES (?,?,?,?,?,?,?,?)
         """,
         (name,rno,dept,year,domain,experience,skills,specific))
@@ -35,6 +35,8 @@ def index():
 
     return render_template("index.html")
 
+
+# VIEW PAGE
 @app.route("/view")
 def view():
     conn = sqlite3.connect("feedback.db")
@@ -43,6 +45,7 @@ def view():
     data = cursor.fetchall()
     conn.close()
     return render_template("view.html", data=data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
