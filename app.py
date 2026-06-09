@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect , request
 import sqlite3
 
 app = Flask(__name__)
@@ -53,7 +53,7 @@ def index():
         conn.commit()
         conn.close()
 
-        return "Feedback Saved Successfully!"
+        return redirect("/view")
 
     return render_template("index.html")
 
