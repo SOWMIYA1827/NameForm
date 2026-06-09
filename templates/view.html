@@ -22,6 +22,8 @@
 
 <h2 align="center">Student Feedback Details</h2>
 
+{% if data %}
+
 <table>
     <tr>
         <th>ID</th>
@@ -42,8 +44,13 @@
         {% endfor %}
     </tr>
     {% endfor %}
-
 </table>
+
+{% else %}
+
+<h3 align="center">No feedback records found.</h3>
+
+{% endif %}
 
 </body>
 </html>
