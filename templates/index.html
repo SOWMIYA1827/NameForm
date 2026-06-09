@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Feedback Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <form method="POST">
+        <h1>Event Feedback Form</h1>
+    <label for="name">Name of Participant:</label>
+     <input type="text" name="name" id="name" placeholder="Enter your name" required><br>
+    <label for="rno">Register Number:</label>
+    <input type="text" name="rno" id="rno" placeholder="Enter your register number" required><br>
+    <label for="dept">Department:</label>
+<select name="dept" id="dept">
+        <option value="CSE">Computer Science and Engineering</option>
+        <option value="ECE">Electronics and Communication Engineering</option>
+        <option value="ME">Mechanical Engineering</option>
+        <option value="CE">Civil Engineering</option>
+        <option value="EE">Electrical Engineering</option>
+    </select required><br>
+    <label for="year">Year of Study:</label>
+    <select name="year" id="year">
+        <option value="1">1st Year</option>
+        <option value="2">2nd Year</option>
+        <option value="3">3rd Year</option>
+        <option value="4">4th Year</option>
+    </select required><br>
+    <label for="domain">Domain of Interest:</label>
+    <select name="domain" id="domain">
+        <option value="AI">Artificial Intelligence</option>
+        <option value="ML">Machine Learning</option>
+        <option value="DS">Data Science</option>
+        <option value="CV">Computer Vision</option>
+        <option value="NLP">Natural Language Processing</option>
+    </select required><br>
+    <label for="experience">How do you feel about the event?</label>
+    <select name="experience" id="experience">
+        <option value="excited">Excited</option>
+        <option value="nervous">Nervous</option>
+        <option value="curious">Curious</option>
+        <option value="indifferent">Indifferent</option>
+    </select required><br>
+    <label for="skills">How do you rate the usefulness of the event?</label>
+    <select name="skills" id="skills">
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="average">Average</option>
+        <option value="poor">Poor</option>
+    </select required><br>
+    <label for="specific">Specific Feedback:</label>
+    <textarea name="specific" id="specific" placeholder="Please provide any specific feedback or suggestions" required></textarea><br>
+    <button type="submit">Submit</button>
+    </form>
+
+    
+
+</body>
+</html>
