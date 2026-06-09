@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Details</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width:100%;
+        }
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+        th{
+            background-color:#4CAF50;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+
+<h2 align="center">Student Feedback Details</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Department</th>
+        <th>Year</th>
+        <th>Domain</th>
+        <th>Experience</th>
+        <th>Skills</th>
+        <th>Specific</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        {% for item in row %}
+        <td>{{ item }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
