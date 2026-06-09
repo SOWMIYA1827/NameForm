@@ -3,7 +3,30 @@ import sqlite3
 
 app = Flask(__name__)
 
-# HOME PAGE (FORM)
+def init_db():
+    conn = sqlite3.connect("feedback.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS feedback (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        rno TEXT,
+        dept TEXT,
+        year TEXT,
+        domain TEXT,
+        experience TEXT,
+        skills TEXT,
+        specific TEXT
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+# Create table when app starts
+init_db()
+
 @app.route("/", methods=["GET", "POST"])
 def index():
 
@@ -23,10 +46,9 @@ def index():
 
         cursor.execute("""
         INSERT INTO feedback
-        (name,rno,dept,year,domain,experience,skills,specific)
-        VALUES (?,?,?,?,?,?,?,?)
-        """,
-        (name,rno,dept,year,domain,experience,skills,specific))
+        (name, rno, dept, year, domain, experience, skills, specific)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (name, rno, dept, year, domain, experience, skills, specific))
 
         conn.commit()
         conn.close()
@@ -35,8 +57,6 @@ def index():
 
     return render_template("index.html")
 
-
-# VIEW PAGE
 @app.route("/view")
 def view():
     conn = sqlite3.connect("feedback.db")
@@ -45,7 +65,6 @@ def view():
     data = cursor.fetchall()
     conn.close()
     return render_template("view.html", data=data)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
