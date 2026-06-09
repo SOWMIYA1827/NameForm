@@ -5,58 +5,45 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <form method="POST" onsubmit="return validateForm()"></form>
+    <form method="POST" >
         <h1>Event Feedback Form</h1>
     <label for="name">Name of Participant:</label>
      <input type="text" name="name" id="name" placeholder="Enter your name" required><br>
     <label for="rno">Register Number:</label>
     <input type="text" name="rno" id="rno" placeholder="Enter your register number" required><br>
     <label for="dept">Department:</label>
-    <input type="checkbox" name="dept" id="dept" value="CSE" required>CSE<br>
-    <input type="checkbox" name="dept" id="dept" value="ECE" required>ECE<br>
-    <input type="checkbox" name="dept" id="dept" value="ME" required>MECH<br>
-    <input type="checkbox" name="dept" id="dept" value="CE" required>EEE<br>
-    <input type="checkbox" name="dept" id="dept" value="IT" required>IT<br>
-    <input type="checkbox" name="dept" id="dept" value="AIDS" required>AIDS<br>
+    <input type="radio" name="dept" id="dept" value="CSE" >CSE<br>
+    <input type="radio" name="dept" id="dept" value="ECE" >ECE<br>
+    <input type="radio" name="dept" id="dept" value="ME" >MECH<br>
+    <input type="radio" name="dept" id="dept" value="CE" >EEE<br>
+    <input type="radio" name="dept" id="dept" value="IT" >IT<br>
+    <input type="radio" name="dept" id="dept" value="AIDS" >AIDS<br>
     <label for="year">Year of Study:</label>
-    <input type="checkbox" name="year" id="year" value="1" required>1st Year<br>
-    <input type="checkbox" name="year" id="year" value="2" required>2nd Year<br>
-    <input type="checkbox" name="year" id="year" value="3" required>3rd Year<br>
-    <input type="checkbox" name="year" id="year" value="4" required>4th Year<br>
+    <input type="radio" name="year" id="year" value="1" >1st Year<br>
+    <input type="radio" name="year" id="year" value="2" >2nd Year<br>
+    <input type="radio" name="year" id="year" value="3" >3rd Year<br>
+    <input type="radio" name="year" id="year" value="4" >4th Year<br>
     <label for="domain">Domain of Interest:</label>
-    <input type="checkbox" name="domain" id="domain" value="AI" required>AI<br>
-    <input type="checkbox" name="domain" id="domain" value="ML" required>ML<br>
-    <input type="checkbox" name="domain" id="domain" value="DS" required>DS<br>
-    <input type="checkbox" name="domain" id="domain" value="Web" required>Web Development<br>
-    <input type="checkbox" name="domain" id="domain" value="App" required>App Development<br>
-    <input type="checkbox" name="domain" id="domain" value="Cyber" required>Cybersecurity<br>
+    <input type="radio" name="domain" id="domain" value="AI" >AI<br>
+    <input type="radio" name="domain" id="domain" value="ML" >ML<br>
+    <input type="radio" name="domain" id="domain" value="DS" >DS<br>
+    <input type="radio" name="domain" id="domain" value="Web" >Web Development<br>
+    <input type="radio" name="domain" id="domain" value="App" >App Development<br>
+    <input type="radio" name="domain" id="domain" value="Cyber" >Cybersecurity<br>
      <label for="experience">How do you feel about the event?</label>
-    <input type="checkbox" name="experience" id="experience" value="excellent" required>Excellent<br>
-    <input type="checkbox" name="experience" id="experience" value="good" required>Good<br>
-    <input type="checkbox" name="experience" id="experience" value="average" required>Average<br>
-    <input type="checkbox" name="experience" id="experience" value="poor" required>Poor<br>    </select required><br>
+    <input type="radio" name="experience" id="experience" value="excellent" >Excellent<br>
+    <input type="radio" name="experience" id="experience" value="good" >Good<br>
+    <input type="radio" name="experience" id="experience" value="average" >Average<br>
+    <input type="radio" name="experience" id="experience" value="poor" >Poor<br>    </select required><br>
     <label for="skills">How do you rate the usefulness of the event?</label>
-    <input type="checkbox" name="skills" id="skills" value="very_useful" required>Very Useful<br>
-    <input type="checkbox" name="skills" id="skills" value="useful" required>Useful<br>
-    <input type="checkbox" name="skills" id="skills" value="neutral" required>Neutral<br>
-    <input type="checkbox" name="skills" id="skills" value="not_useful" required>Not Useful<br>  
+    <input type="radio" name="skills" id="skills" value="very_useful" >Very Useful<br>
+    <input type="radio" name="skills" id="skills" value="useful" >Useful<br>
+    <input type="radio" name="skills" id="skills" value="neutral" >Neutral<br>
+    <input type="radio" name="skills" id="skills" value="not_useful" >Not Useful<br>  
     <label for="specific">Specific Feedback:</label>
     <textarea name="specific" id="specific" placeholder="Please provide any specific feedback or suggestions" required></textarea><br>
     <button type="submit">Submit</button>
     </form>
 
-    
-<script>
-function validateForm() {
-    let form = document.forms[0];
-
-    if (!form.checkValidity()) {
-        alert("Please fill all the details");
-        return false;
-    }
-
-    return true;
-}
-</script>
 </body>
 </html>
