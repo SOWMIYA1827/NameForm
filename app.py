@@ -4,11 +4,16 @@ import os
 
 app = Flask(__name__)
 
+# ---------------------------
+# DATABASE CONNECTION
+# ---------------------------
 def get_db_connection():
-    return psycopg2.connect(
-        os.environ["DATABASE_URL"],
-        sslmode="require"
-    )
+    return psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
+
+
+# ---------------------------
+# INIT DB TABLE
+# ---------------------------
 def init_db():
     try:
         conn = get_db_connection()
@@ -32,26 +37,31 @@ def init_db():
         cursor.close()
         conn.close()
 
-        print("Table created successfully")
+        print("✅ Table created successfully")
 
     except Exception as e:
-        print("Database Error:", e)
+        print("❌ Database Error:", e)
 
+
+# create table on startup
 init_db()
 
+
+# ---------------------------
+# HOME PAGE (INSERT DATA)
+# ---------------------------
 @app.route("/", methods=["GET", "POST"])
 def index():
 
     if request.method == "POST":
-
         try:
             conn = get_db_connection()
             cursor = conn.cursor()
 
             cursor.execute("""
-            INSERT INTO feedback
-            (name, rno, dept, year, domain, experience, skills, specific)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO feedback
+                (name, rno, dept, year, domain, experience, skills, specific)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """, (
                 request.form.get("name"),
                 request.form.get("rno"),
@@ -74,17 +84,19 @@ def index():
 
     return render_template("index.html")
 
+
+# ---------------------------
+# VIEW PAGE (READ DATA)
+# ---------------------------
 @app.route("/view")
 def view():
-
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
 
         cursor.execute("""
-        SELECT *
-        FROM feedback
-        ORDER BY id DESC
+            SELECT * FROM feedback
+            ORDER BY id DESC
         """)
 
         data = cursor.fetchall()
@@ -97,5 +109,9 @@ def view():
     except Exception as e:
         return f"Database Error: {e}"
 
+
+# ---------------------------
+# RUN APP
+# ---------------------------
 if __name__ == "__main__":
     app.run(debug=True)
